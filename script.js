@@ -444,9 +444,9 @@ window.septle = {
           tries = "X";
         }
         let gameNames = {
-          "septle": "Septle",
+          "septle": "#Septle",
           "six": "Bonus",
-          "nytimes": "Wordle"
+          "nytimes": "#Wordle"
         }
         let all = "";
         if(tries != 0) {
@@ -468,7 +468,7 @@ window.septle = {
       // generate full sharing string
       let streak = this.load()["streak"];
       shareContent["day"] = dayNumber;
-      shareContent["all"] = "#Septle " + dayNumber + " - 🔥 " + streak + " day streak - septle.com\n" + shareContent["septle"]["all"] + shareContent["six"]["all"] + shareContent["nytimes"]["all"];
+      shareContent["all"] = "Septle " + dayNumber + " - 🔥 " + streak + " day streak - septle.com\n" + shareContent["septle"]["all"] + shareContent["six"]["all"] + shareContent["nytimes"]["all"];
       shareContent["email"] = "mailto:?subject=Septle " + dayNumber + "&body=" + encodeURIComponent(shareContent["all"]);
       shareContent["tweet"] = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareContent["all"]);
       shareContent["telegram"] = "https://t.me/share/url?url=https://septle.com&text=" + encodeURIComponent(shareContent["all"]);
