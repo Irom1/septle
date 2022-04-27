@@ -122,6 +122,7 @@ window.septle = {
     let caption = document.createElement("caption");
     caption.innerText = "Correct Word: " + word.toUpperCase();
     caption.style = "caption-side:bottom;";
+    caption.style.visibility = "hidden";
     caption.classList.add("answer");
     table.appendChild(caption);
     // create squares

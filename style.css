@@ -227,6 +227,7 @@ table.squares caption strong {
 }
 table.squares.photo caption.title, table.squares.fail caption.answer {
   display: table-caption;
+  visibility: visible !important;
 }
 /* End captions and screenshots */
 tr.current td {
