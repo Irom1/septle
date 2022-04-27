@@ -91,7 +91,7 @@
   </main>
 
   <aside id="home" class="show">
-    <p>Guess the <strong>Septle</strong> in eight tries.</p>
+    <p>Guess the <strong>Septle</strong> in eight tries. <a onclick="window.septle.aside.show('info');">What's this?</a></p>
     <p>If one game isn't enough, you can play the bonus or try <a onclick="window.septle.aside.show('practice');">practice mode</a>!</p>
     <span style="height:10px;display:block;"></span>
     <div id="septle" class="bundle">
@@ -118,17 +118,17 @@
         <button onclick="window.septle.saveImage.run('nytimes');" class="image"></button>
       </span>
     </div>
-    <span class="halfButtons">
-      <button onclick="window.septle.aside.show('info');" class="info"></button>
+    <!--<span class="halfButtons">
+      <button onclick="window.septle.aside.show('info');" class="info"></button>-->
       <button onclick="window.septle.aside.show('statistics');" class="openStats"></button>
-    </span>
+    <!--</span>-->
     <span style="height:10px;display:block;"></span>
     <div class="bundle">
       <h2>Support Us</h2>
-      <button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeBMjFjauT9ynh809m3NhGiUbiXr1lkefSpDTtJrS9WIxgyAA/viewform')"><i class="fa-solid fa-message-lines"></i> Leave Feedback</button>
-      <span style="height:10px;display:block;"></span>
-      <button style="background:var(--pink);color:white" onclick="window.open('https://ko-fi.com/septle')"><i class="fa-solid fa-heart"></i> Support by Donating</button>
-      <!--Stuff-->
+      <span class="halfButtons">
+        <button style="background:var(--yellow);color:white" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeBMjFjauT9ynh809m3NhGiUbiXr1lkefSpDTtJrS9WIxgyAA/viewform')"><i class="fa-solid fa-message-lines"></i> Feedback</button>
+        <button style="background:var(--pink);color:white" onclick="window.open('https://ko-fi.com/septle')"><i class="fa-solid fa-heart"></i> Donate</button>
+      </span>
     </div>
   </aside>
   <aside id="practice">
