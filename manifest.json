@@ -1,6 +1,6 @@
 {
   "short_name": "Septle",
-  "name": "Septle",
+  "name": "Septle - The Seven Letter Wordle",
   "icons": [
     {
       "src": "/images/favicon-48.png",
@@ -18,5 +18,5 @@
   "background_color": "#21123b",
   "display": "standalone",
   "theme_color": "#21123b",
-  "description": "A harder daily word game"
+  "description": "Septle is a seven letter word game based off of Wordle. Guess the hidden word in 8 tries. New puzzles are available each day."
 }
