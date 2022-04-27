@@ -292,7 +292,10 @@ window.septle = {
       }
       if (guessWord == word) {
         // they won!
-        if(!nosave) {
+        if(this.listName == "practice") {
+          alert("You won! Tap to go back to the menu.",true).setAttribute("onclick","window.septle.aside.show('practice')");
+          window.confetti({particleCount:150,ticks:150});
+        } else if(!nosave) {
           alert("You won!");
           window.confetti({particleCount:150,ticks:150});
           setTimeout(goHome,3000);
@@ -308,7 +311,9 @@ window.septle = {
           document.querySelector("table.squares").classList.add("fail");
           simpleBoard["solved"] = "fail";
         }
-        if(!nosave) {
+        if(this.listName == "practice") {
+          alert("You lost. Tap to go back to the menu.",true).setAttribute("onclick","window.septle.aside.show('practice')");
+        } else if(!nosave) {
           alert("You lost. Better luck next time!");
           setTimeout(goHome,3000);
         }
@@ -773,7 +778,7 @@ if (window.self === window.top) {
 }
 
 // replace alert function
-function alert(text) {
+function alert(text, persistant=false) {
   let alertBox = document.querySelector("#alertBox");
   let span = document.createElement("span");
   span.innerText = text;
@@ -781,7 +786,10 @@ function alert(text) {
     event.target.remove();
   });
   alertBox.appendChild(span);
-  setTimeout(function(){
-    span.remove();
-  },2000);
+  if(persistant == false) {
+    setTimeout(function(){
+      span.remove();
+    },2000);
+  }
+  return span;
 }
