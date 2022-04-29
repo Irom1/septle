@@ -529,12 +529,19 @@ window.septle = {
       let stats = this.load();
       if(won == true) {
         stats["win"]++;
-        gtag("event","win");
       } else if(won == "test") {
         // do nothing with the win count
       } else {
         stats["fail"]++;
         gtag("event","fail");
+      }
+      if(won != "test") {
+        let brick = {
+          "day": window.septle.getWord()["visible"],
+          "guesses": answerCount,
+          "won": won
+        }
+        gtag("event",window.septle.listName + "_end",brick);
       }
       if(answerCount) {
         stats["distribution"][answerCount-1]++;
@@ -733,6 +740,7 @@ window.septle.statistics.updateStreak("test");
 // load more resources
 document.body.appendChild(document.createElement('script')).src='concepts/confetti.js';
 document.body.appendChild(document.createElement('script')).src='concepts/image.js';
+//document.body.appendChild(document.createElement('script')).src='concepts/errors.js';
 
 // change the title to be more readable
 document.title = "Septle";
@@ -775,6 +783,7 @@ if (window.self === window.top) {
   // trigger some google analytics thing here
 } else {
   // otherwise trigger something else for google analytics
+  gtag("event","pageFramed");
 }
 
 // replace alert function
