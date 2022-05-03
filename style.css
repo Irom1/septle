@@ -447,7 +447,7 @@ aside div.complete h2 span.status:after {
   color: var(--green);
 }
 aside div.fail h2 span.status:after {
-  content: "Failed";
+  content: "unsuccessful";
   color: red;
 }
 
@@ -527,7 +527,7 @@ aside button.board:before {
   content: "\e195  View Board";
 }
 aside button.image:before {
-  content: "\e164  Save Image";
+  content: "\e164  Share Image";
 }
 aside button.info:before {
   content: "\f05a  Info";

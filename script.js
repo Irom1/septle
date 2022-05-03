@@ -741,9 +741,11 @@ window.septle.statistics.updateStreak("test");
 document.body.appendChild(document.createElement('script')).src='concepts/confetti.js';
 document.body.appendChild(document.createElement('script')).src='concepts/image.js';
 //document.body.appendChild(document.createElement('script')).src='concepts/errors.js';
-
+// scroll buttons into view
+document.querySelector("#septle").previousElementSibling.scrollIntoView();
 // change the title to be more readable
 document.title = "Septle";
+
 
 // check to see if day has passed
 document.addEventListener("focus", function(){
