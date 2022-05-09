@@ -30,7 +30,8 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link href="images/septle-small-logo.png" rel="apple-touch-icon" />
 <!-- end of stuff to keep -->
-<link rel="stylesheet" href="./style.css?v=6">
+<link rel="stylesheet" href="./standard.css?v=7">
+<link rel="stylesheet" href="./style.css?v=7">
 
 </head>
 <body>
@@ -93,7 +94,7 @@
   <aside id="home" class="show">
     <p>Guess the <strong>Septle</strong> in eight tries. <a onclick="window.septle.aside.show('info');">What's this?</a></p>
     <p>If one game isn't enough, you can play the bonus or try <a onclick="window.septle.aside.show('practice');">practice mode</a>!</p>
-    <span style="height:10px;display:block;"></span>
+    <span class="spacing"></span>
     <div id="septle" class="bundle">
       <h2>Septle: <span class="status"></span></h2>
       <button onclick="window.septle.start(this);" class="play"></button>
@@ -122,7 +123,7 @@
       <button onclick="window.septle.aside.show('info');" class="info"></button>-->
       <button onclick="window.septle.aside.show('statistics');" class="openStats"></button>
     <!--</span>-->
-    <span style="height:10px;display:block;"></span>
+    <span class="spacing"></span>
     <div class="bundle">
       <h2>Support Us</h2>
       <p>Help us keep septle up to date and ad-free!</p>
@@ -181,7 +182,7 @@
       <button class="share" onclick="septle.statistics.share()"> Share</button>
       <button class="copy" onclick="septle.statistics.copy()"> Copy Results</button>
     </span>
-    <span style="height:10px;display:block;"></span>
+    <span class="spacing"></span>
     <span class="halfButtons">
       <button class="telegram" onclick="septle.statistics.url('telegram')"></button>
       <button class="twitter" onclick="septle.statistics.url('tweet')"></button>
@@ -243,7 +244,7 @@
     <div class="bundle">
       <h2>Colors</h2>
       <button class="contrastEnabled" onclick="window.septle.theme.contrast();">Colorblind Mode:&nbsp;</button>
-      <span style="height:10px;display:block;"></span>
+      <span class="spacing"></span>
       <button class="aprilFoolsEnabled" onclick="window.septle.theme.aprilFools();">Spring Theme:&nbsp;</button>
     </div>
   </aside>
