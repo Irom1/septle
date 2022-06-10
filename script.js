@@ -481,13 +481,17 @@ window.septle = {
       shareContent["facebook"] = "https://www.facebook.com/sharer/sharer.php?u=septle.com&quote=Paste your score";
       return shareContent;
     },
-    copy: function() {
-      let shareText = this.fetchEmojis()["all"];
+    copy: function(shareText) {
+      let manualText = true;
+      if(!shareText) {
+        shareText = this.fetchEmojis()["all"];
+        manualText = false;
+      }
       if(navigator.clipboard) {
         navigator.clipboard.writeText(shareText);
-        alert("Copied results to clipboard!");
+        if(!manualText) alert("Copied results to clipboard!");
       } else {
-        this.copyFallback(shareText);
+        this.copyFallback(shareText, manualText);
       }
       gtag("event","share");
     },
@@ -505,7 +509,7 @@ window.septle = {
       textArea.setSelectionRange(0, 99999);
       document.execCommand('copy');
       document.body.removeChild(textArea);
-      alert("Copied results to clipboard using fallback!");
+      if(!manualText) alert("Copied results to clipboard using fallback!");
     },
     share: function() {
       let shareText = this.fetchEmojis()["all"];
@@ -576,7 +580,11 @@ window.septle = {
         "lastStreak":0
       };
       let stats = localStorage.septleStats || JSON.stringify(basicStats);
-      stats = JSON.parse(stats);
+      try {
+        stats = JSON.parse(stats);
+      } catch {
+        stats = basicStats;
+      }
       // establish best streak if not already saved to localStorage
       if(stats["bestStreak"] === undefined) {
         stats["bestStreak"] = stats["streak"];

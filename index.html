@@ -247,6 +247,13 @@
       <span class="spacing"></span>
       <button class="aprilFoolsEnabled" onclick="window.septle.theme.aprilFools();">Spring Theme:&nbsp;</button>
     </div>
+    <div class="bundle">
+      <h2>Streak</h2>
+      <p>Have a past streak on another device/browser? You can now carry over the stats.</p>
+      <button onclick="localStorage.septleStats = atob(prompt('What is your export string?'));window.septle.statistics.load();">Import Past Streak</button>
+      <span class="spacing"></span>
+      <button onclick="window.septle.statistics.load();window.septle.statistics.copy(window.btoa(localStorage.septleStats));alert(`Copied export string to clipboard. To import, tap 'Import Past Streak' and paste the string in another browser.`);">Export Current Streak</button>
+    </div>
   </aside>
   <aside id="info">
     <h1>Info</h1>
