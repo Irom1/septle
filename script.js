@@ -586,9 +586,14 @@ window.septle = {
       stats.bestStreak = Number(prompt("What is your best streak?")) || stats.bestStreak;
       stats.win = Number(prompt("How many games have you won?")) || stats.win;
       stats.fail = Number(prompt("How many games have you lost?")) || stats.fail;
-      stats.distribution = eval("[" + prompt("What is your guess distribution? Values from 1 to 8 guesses, seperated by a comma.\n\nEX: 0,1,4,2,4,8,6,3") + "]") || stats.distribution;
+      initDist = stats.distribution;
+      stats.distribution = eval("[" + prompt("What is your guess distribution? Values from 1 to 8 guesses, seperated by a comma.\n\nEX: 0,1,4,2,4,8,6,3") + "]");
       let distributionSuccess = false;
       try {
+        if(stats.distribution.length == 0) {
+          stats.distribution = initDist;
+          distributionSuccess = true;
+        }
         if(stats.distribution.length == 8) {
           distributionSuccess = true;
         }
@@ -596,7 +601,7 @@ window.septle = {
         distributionSuccess = false;
       }
       if(distributionSuccess == false) {
-        alert("Guess distribution was not entered properly, it is now reset! It must be a list of 8 numbers, seperated by a comma.");
+        alert("Guess distribution was not entered properly, it is now reset! It must be a list of 8 numbers, seperated by a comma.\n\nTap to dismiss.",true);
         stats.distribution = [0,0,0,0,0,0,0,0];
       }
       localStorage.septleStats = JSON.stringify(stats); // save
