@@ -582,6 +582,7 @@ window.septle = {
       if(!confirm("Are you sure you want to update the stats manually? Any responses you leave blank will be ignored.")) {
         return;
       }
+      stats.lastStreak = window.septle.getWord()["dayOffset"] - 1;
       stats.streak = Number(prompt("What is your current streak?")) || stats.streak;
       stats.bestStreak = Number(prompt("What is your best streak?")) || stats.bestStreak;
       stats.win = Number(prompt("How many games have you won?")) || stats.win;
@@ -590,22 +591,20 @@ window.septle = {
       stats.distribution = eval("[" + prompt("What is your guess distribution? Values from 1 to 8 guesses, seperated by a comma.\n\nEX: 0,1,4,2,4,8,6,3") + "]");
       let distributionSuccess = false;
       try {
-        if(stats.distribution.length == 0) {
+        if(stats.distribution.length != 8) {
           stats.distribution = initDist;
           distributionSuccess = true;
-        }
-        if(stats.distribution.length == 8) {
+        } else if(stats.distribution.length == 8) {
           distributionSuccess = true;
         }
-      } catch {
-        distributionSuccess = false;
-      }
+      } catch {}
       if(distributionSuccess == false) {
-        alert("Guess distribution was not entered properly, it is now reset! It must be a list of 8 numbers, seperated by a comma.\n\nTap to dismiss.",true);
-        stats.distribution = [0,0,0,0,0,0,0,0];
+        alert("Guess distribution was not entered properly. It must be a list of 8 numbers, seperated by a comma.\n\nTap to dismiss.",true);
+        stats.distribution = initDist;
       }
       localStorage.septleStats = JSON.stringify(stats); // save
       this.load();
+      window.septle.aside.show("statistics");
       alert("Sucess!");
     },
     basicStats: {
