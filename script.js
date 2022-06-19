@@ -577,20 +577,46 @@ window.septle = {
       localStorage.septleStats = JSON.stringify(stats); // save
       this.load(); // run visual elements
     },
+    manualUpdate: function() {
+      let stats = JSON.parse(localStorage.septleStats);
+      if(!confirm("Are you sure you want to update the stats manually? Any responses you leave blank will be ignored.")) {
+        return;
+      }
+      stats.streak = Number(prompt("What is your current streak?")) || stats.streak;
+      stats.bestStreak = Number(prompt("What is your best streak?")) || stats.bestStreak;
+      stats.win = Number(prompt("How many games have you won?")) || stats.win;
+      stats.fail = Number(prompt("How many games have you lost?")) || stats.fail;
+      stats.distribution = eval("[" + prompt("What is your guess distribution? Values from 1 to 8 guesses, seperated by a comma.\n\nEX: 0,1,4,2,4,8,6,3") + "]") || stats.distribution;
+      let distributionSuccess = false;
+      try {
+        if(stats.distribution.length == 8) {
+          distributionSuccess = true;
+        }
+      } catch {
+        distributionSuccess = false;
+      }
+      if(distributionSuccess == false) {
+        alert("Guess distribution was not entered properly, it is now reset! It must be a list of 8 numbers, seperated by a comma.");
+        stats.distribution = [0,0,0,0,0,0,0,0];
+      }
+      localStorage.septleStats = JSON.stringify(stats); // save
+      this.load();
+      alert("Sucess!");
+    },
+    basicStats: {
+      "distribution":[0,0,0,0,0,0,0,0],
+      "streak":0,
+      "bestStreak":0,
+      "win":0,
+      "fail":0,
+      "lastStreak":0
+    },
     load: function() {
-      let basicStats = {
-        "distribution":[0,0,0,0,0,0,0,0],
-        "streak":0,
-        "bestStreak":0,
-        "win":0,
-        "fail":0,
-        "lastStreak":0
-      };
-      let stats = localStorage.septleStats || JSON.stringify(basicStats);
+      let stats = localStorage.septleStats || JSON.stringify(this.basicStats);
       try {
         stats = JSON.parse(stats);
       } catch {
-        stats = basicStats;
+        stats = this.basicStats;
       }
       // establish best streak if not already saved to localStorage
       if(stats["bestStreak"] === undefined) {
@@ -779,16 +805,17 @@ if(!localStorage.intro) {
   // Bad word choice message
   localStorage.welcomeBackMessage = "sorry";
   window.septle.aside.show("sorry");
-  fixStreak();
 }
 
 /* Give people back their streaks */
 function fixStreak() {
   let stats = window.septle.statistics.load();
-  if(stats.lastStreak == 108 && stats.streak == 0) {
+  if(stats.lastStreak == "109" && stats.streak == "0") {
     stats.streak = stats.bestStreak;
-  } 
+  }
+  localStorage.septleStats = JSON.stringify(stats);
 }
+fixStreak();
 
 
 if (window.self === window.top) {
@@ -824,7 +851,7 @@ function alert(text, persistant=false) {
   if(persistant == false) {
     setTimeout(function(){
       span.remove();
-    },2000);
+    },3000);
   }
   return span;
 }

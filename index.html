@@ -254,6 +254,7 @@
       <button onclick="localStorage.septleStats = atob(prompt('What is your export string?'));window.septle.statistics.load();">Import Past Streak</button>
       <span class="spacing"></span>
       <button onclick="window.septle.statistics.load();window.septle.statistics.copy(window.btoa(localStorage.septleStats));alert(`Copied export string to clipboard. To import, tap 'Import Past Streak' and paste the string in another browser.`);">Export Current Streak</button>
+      <p>Don't have an export string? <a onclick="window.septle.statistics.manualUpdate();">Manually input</a> instead.</p>
     </div>
   </aside>
   <aside id="info">

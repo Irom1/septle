@@ -334,7 +334,7 @@ aside button.board:before {
   content: "\e195  View Board";
 }
 aside button.image:before {
-  content: "\e164  Share Image";
+  content: "\f0ab  Save Image";
 }
 aside button.info:before {
   content: "\f05a  Info";
