@@ -22,10 +22,10 @@
   border-color: transparent;
 }
 .lightEnabled, .darkEnabled {
-  border: 4px solid transparent;
+  border: 4px solid transparent !important;
 }
 body:not(.dark) .lightEnabled, .dark .darkEnabled {
-  border-color: var(--yellow);
+  border-color: var(--yellow) !important;
 }
 .contrastEnabled::after, .aprilFoolsEnabled::after {
   content: "Disabled";

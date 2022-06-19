@@ -272,16 +272,24 @@
       </span>
     </div>
   </aside>
-  <aside id="welcomeBack">
-    <h1>We're working on it!</h1>
-    <p>We completely re-wrote the interface and are working to fix any bugs.</p>
-    <ul>
-      <li>We have carried over your past streaks from the old version, you can still share normally.</li>
-      <li>It appears that the new version isn't working in some browsers - try another browser and leave us feedback. The old version is <a href="/old/">here</a>.</li>
-      <li>We added options to play wordle and a bonus word. You only need to play the septle to get a streak (no more french words BTW).</li>
-    </ul>
-    <p>We appreaciate all who have given us <a href="https://docs.google.com/forms/d/e/1FAIpQLSeBMjFjauT9ynh809m3NhGiUbiXr1lkefSpDTtJrS9WIxgyAA/viewform" target="_blank">feedback</a>. Let us know if there are more problems.</p>
-    <button onclick="window.septle.aside.show('home');">Continue to new version!</button>
+  <aside id="sorry">
+    <h1>We're working on our word choice!</h1>
+    <p>From now on:</p>
+    <ol style="padding: 0 20px; line-height: 1.25;">
+      <li>Others will review words before being published. That starts today.</li><br>
+      <li>No more plurals, compound words, or inconsistent international spellings (no words like dialogue/dialog).</li><br>
+      <li>Lastly, we have restored your best streak for those who lost streaks during #364.</li>
+    </ol><br>
+    <button onclick="window.septle.aside.show('home');" style="background:var(--green);color:white;"><b>Continue ➜</b></button>
+  </aside>
+  <aside id="wordChanged">
+    <h1>Looks like one of the words changed!</h1>
+    <p>This means that one of today's words changed since you started guessing.</p>
+    <p style="line-height: 1.5;">We only do this if:<br>
+      1) We accidentally chose a really obscure word<br>
+      2) The New York Times changed their word in advance, and we only realized midday.</p>
+    <br><br><br><br>
+    <button onclick="window.septle.aside.show('home');" style="background:var(--green);color:white;"><b>Continue ➜</b></button>
   </aside>
   <aside id="intro">
     <h2>How to Play</h2>

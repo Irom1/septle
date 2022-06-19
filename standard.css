@@ -1,4 +1,4 @@
-/* irom1's standard.css, theme for webapps v2 */
+/* irom1's standard.css, theme for webapps v3.1 */
 
 /* Font Awesome Pro */
 @import url("https://site-assets.fontawesome.com/releases/v6.0.0/css/all.css");
@@ -24,10 +24,10 @@
   --green: #79b851;
   --yellow: #f3c237;
   /* BlockStatus colors */
-  --light-yellow: #efd53e88;
-  --very-light-yellow: #efd53e44;
+  --light-yellow: #f3c23766;
+  --very-light-yellow: #f3c23744;
+  --dark-green: #18b461;
   --red: #f92954;
-  --purple: #21123b;
   --ios-blue: #007AFF;
 }
 /* Light Colors */
@@ -40,7 +40,9 @@
   --color-tone-6: #f6f7f8;
   --color-tone-7: #ffffff;
   --opacity-50: #f3f2f8;
-  --transparent: #ffffff88;
+  --transparent: #f3f2f8aa;
+  --blob: var(--color-tone-7);
+  --blobButton: var(--color-tone-5);
 }
 /* Dark Colors */
 .dark {
@@ -52,7 +54,9 @@
   --color-tone-6: #1a1a1b;
   --color-tone-7: #121213;
   --opacity-50: #000000;
-  --transparent: #27272988;
+  --transparent: #000000aa;
+  --blob: var(--color-tone-5);
+  --blobButton: var(--color-tone-3);
 }
 /* Other colors */
 .contrast {
@@ -72,9 +76,10 @@
   /* iOS/mobile device scroll fixes */
   touch-action: pan-y;
   -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  user-select: none;
-  transition: background 0.3s, color 0.3s, border 0.3s;
+  -webkit-user-select: auto; /* Safari */
+  user-select: auto;
+  transition: background 0.1s, color 0.1s, border 0.1s;
+  -webkit-appearance: none;
 }
 *:not(input) {
   user-select: none;
@@ -82,6 +87,7 @@
 }
 body {
   background: var(--opacity-50);
+  color: var(--color-tone-1);
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -123,6 +129,7 @@ header {
   background: var(--purple);
   color: whitesmoke;
   z-index: 3;
+  overflow: hidden;
 }
 header button, header h1 {
   font-size: 30px;
@@ -163,6 +170,9 @@ div.loadScreen, div.landscape {
   border-radius: 15px 15px 0 0;
   font-family: arial;
   overflow: hidden;
+}
+div.loadScreen.instant {
+  transition: bottom 0.5s 0s;
 }
 div.loadScreen img, div.landscape i {
   width: 150px;
@@ -234,19 +244,22 @@ aside.show {
 }
 
 /* Formatting */
-aside h1, section h1 {
+aside h1, section h1, .bundle h1 {
   margin: 0;
   margin-bottom: 20px;
   font-size: 26px;
 }
-aside p, section p {
+.bundle h1 {
+  margin-bottom: 0;
+}
+aside p, section p, .bundle p {
   margin: 10px 0;
   font-size: 16px;
 }
-aside p a, section p a {
+aside p a, section p a, .bundle a {
   color: var(--color-tone-1);
 }
-aside h2, section h2 {
+aside h2, section h2, .bundle h2 {
   margin: 10px 0;
   font-size: 20px;
 }
@@ -256,7 +269,7 @@ span.spacing {
 }
 
 /* buttons */
-aside button, section button {
+aside button, section button, button.forward, div.bundle button {
   padding: 10px;
   width: 100%;
   border: none;
@@ -264,25 +277,19 @@ aside button, section button {
   font-size: 16px;
   color: var(--color-tone-1);
   cursor: pointer;
-  background: #ffffff;
+  background: var(--blob);
 }
 div.bundle {
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 10px;
-  background: #ffffff;
+  background: var(--blob);
 }
 div.bundle h2 {
   margin-top: 0;
 }
-.dark aside button, .dark section button, .dark div.bundle {
-  background: #1d1d1f;
-}
-.dark div.bundle button, div.bundle button.dark {
-  background: #59606a;
-}
 div.bundle button, div.bundle button.light {
-  background: #eeeef0;
+  background: var(--blobButton);
 }
 span.halfButtons {
   display: flex;
@@ -292,15 +299,129 @@ span.halfButtons button {
   display: inline-block;
   margin: 0 3px;
 }
+/* IOS Button */
+button.ios {
+  width: calc(100% - 30px);
+  border: none;
+  color: white;
+  padding: 8px;
+  font-size: 20px;
+  background-color: var(--ios-blue);
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 5px auto;
+}
+button.ios.yellow {
+  background: var(--yellow);
+  color: black;
+}
+button.ios.bottom {
+  position: absolute;
+  margin: 0;
+  bottom: calc(15px + env(safe-area-inset-bottom) / 2);
+  left: 15px;
+  width: calc(100% - 30px);
+}
+button[disabled] {
+  cursor: not-allowed;
+  background: lightgray !important;
+}
+/* Forward button */
+button.forward {
+  text-align: left;
+  padding: 10px;
+  margin-top: 6px;
+}
+button.forward::after {
+  content: "\f105";
+  font-family: "Font Awesome 5 Pro";
+  float: right;
+}
 
 /* iOS header */
 nav {
-  background: #bbb;
   background: var(--purple);
   width: 100%;
   height: env(safe-area-inset-top);
   position: fixed;
-  z-index: 1;
+  z-index: 4;
   top: 0;
   left: 0;
+}
+
+/* Rotating animation */
+.rotating {
+  animation: rotate 0.5s;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Bottom popup */
+.bottomPopup {
+  background: var(--color-tone-6);
+  position: fixed;
+  bottom: 0;
+  top: 100%;
+  width: 100%;
+  border-radius: 30px 30px 0 0;
+  transition: top 0.4s;
+  overflow: hidden;
+  z-index: 3;
+  color: var(--color-tone-1);
+  display: block;
+  box-shadow: 0px 0 10px rgba(0, 0, 0, 0.8);
+}
+.bottomPopup.show {
+  top: calc(60px + env(safe-area-inset-top));
+}
+.bottomPopup i.fa-dash {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  color: #888;
+  cursor: pointer;
+}
+.bottomPopup h1 {
+  margin: 20px;
+  text-align: center;
+}
+.bottomPopup .thin {
+  padding: 0 20px;
+}
+.bottomPopup p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0;
+}
+.bottomPopup p strong {
+  font-size: 20px;
+}
+.bottomPopup .errorText {
+  display: none;
+  color: var(--red);
+  margin-top: 5px;
+  font-size: 14px;
+}
+.bottomPopup.error .errorText {
+  display: block;
+}
+.bottomPopup input[type=text] {
+  border: 2px solid transparent;
+  width: 100%;
+  font-size: 20px;
+  color: var(--color-tone-1);
+  background: var(--color-tone-5);
+  padding: 15px;
+  border-radius: 10px;
+  outline: 0;
+}
+.bottomPopup input[type=text]:focus {
+  border-color: var(--yellow);
+}
+.bottomPopup.error input[type=text] {
+  border-color: var(--red);
 }
