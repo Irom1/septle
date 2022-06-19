@@ -23,11 +23,13 @@ window.septle = {
     "six":["german","guitar","toasty","caught","crafts","pointy","lovers","brainy","preset","jumper","teabag","trivia","aphids","unseat","myself","radius","badger","corpse","hunter","lizard","trophy","traced","advise","rhythm","banter","potato","genius","studio","honest","ponder","satire","formal","podium","CASUAL","JETLAG","ASHAME","UNMOOR","BUNTED","ARGUED","JOKERS","BUTTER","DENIED","ASLEEP","GHOSTS","COINED","GRISLY","WEEKLY","POKING","ASCENT","SNOUTS","OPPOSE","MOTHER","ROCKET","SPOILS","MAKING","EIGHTY","adverb","SOCKET","FLAIRS","INJECT","HISSED","DEBATE","OGLING","AIMING","LEASES","UNRIPE","STRONG","BEARER","HONEST","STAKED","PERMIT","FLOCKS","GREEDY","ORDERS","PUNDIT","FLIGHT","COTTON","FAMILY","LITTLE","EXPORT","DIALOG","GOATEE","DOLLAR","FOUGHT","RENDER","THRUST","SAMPLE","UNSAFE","TUNNEL","UTMOST","GAMING","PIMPLE","COLDER","MISFIT","AUTHOR","COATED","PATROL","ALMOST","NOTIFY","GURGLE","GLAZED","OYSTER","ESCAPE","GANDER","OWNERS","REDACT","MARKUP","ROYALS","BLIMEY","PLUMBS","EXPERT","STRESS","STRUNG","ETHICS","WILTED","SQUINT","RAFFLE","PRUNED","DARKLY","BRANCH"],
     "septle":["spinach","because","ghostly","godsend","gardens","reptile","between","plastic","forever","musical","haircut","explain","condemn","narwhal","formula","lactose","drastic","stylist","elastic","ragtime","muscled","pyramid","clarify","aspirin","copycat","glacial","seizure","garnish","tabloid","harvest","eastern","factory","posture","contour","partake","obscure","paprika","special","confide","treason","DANCERS","OFFLINE","CATALOG","SPAMMED","DIRTIED","FRIENDS","OMITTED","RAGEFUL","DEVOTED","SLOWEST","RINGING","REPLAYS","cabinet","CREASED","JOBLESS","PHANTOM","FIREMEN","REFUSED","INSPECT","BUGLERS","PITYING","ITCHING","SECURED","PROBLEM","VISUALS","UNSLUNG","IMPEACH","SERGING","SNIPPER","LIVIDLY","SPINAGE","CLANGER","UNICORN","TASTERS","CAUTION","THREATS","SOYBEAN","ARMLOAD","SEEPING","BEANBAG","OUTLAWS","MEANING","JUNKIER","DANGERS","NEWBORN","ROYALLY","POTPIES","LIMPING","WILDCAT","WARSHIP","MARBLES","FREEWAY","INMATES","STARTED","UNBRAID","DOORMEN","LOCATOR","STENCHY","MAJESTY","TEENAGE","PASTELS","WORKOUT","GOURMET","DINNING","WAYSIDE","WINDOWS","FORKFUL","PARCELS","DENSITY","ALUMIUM","REPLACE","INKWELL","EQUINOX","CHEMIST","EXECUTE","SANDPIT","PROJECT","JOURNAL","MARSHAL","UPGRADE","TOURIST","ENCRYPT","DISTURB","BROUGHT","COMPOST","GYMNAST","FORMULA","SOMEONE","DISTANT","SYNAPSE","SUMMARY","ANNOYED","RAMPAGE","CONTACT","SCRATCH","OMINOUS","BURNOUT","DIALECT","SHAMPOO","TERRAIN","DWINDLE","SLENDER","LAWSUIT","WEIGHTY","INSTEAD","FIXTURE","FURTHER","PENDING","UNIFORM","CREATOR","DAYTIME"]
   },
-  getWord: function (list) {
+  getWord: function (list, save=true) {
     if(!list) {
       list = this.listName;
     }
-    this.listName = list;
+    if(save) {
+      this.listName = list;
+    }
     if(list == "practice") {
       list = "septle";
     }
@@ -46,13 +48,13 @@ window.septle = {
     };
   },
   getBoard: function() {
-    let wordInfo = this.getWord();
+    let wordInfo = this.getWord(null, false);
     let todayOffset = wordInfo["dayOffset"];
     let basicBoard = {
       "day": todayOffset
     };
     ["nytimes", "six", "septle"].forEach((wordListName) => {
-      wordInfo = this.getWord(wordListName);
+      wordInfo = this.getWord(wordListName, false);
       basicBoard[wordListName] = {
         "solved": false,
         "state": [],
@@ -65,7 +67,7 @@ window.septle = {
       board = basicBoard;
     } else {
       ["nytimes", "six", "septle"].forEach((wordListName) => {
-        wordInfo = this.getWord(wordListName);
+        wordInfo = this.getWord(wordListName, false);
         if(board[wordListName].word != wordInfo.word) {
           board[wordListName] = basicBoard[wordListName];
           this.aside.show("wordChanged");
