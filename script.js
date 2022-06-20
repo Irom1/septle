@@ -301,10 +301,10 @@ window.septle = {
         // they won!
         if(this.listName == "practice") {
           alert("You won! Tap to go back to the menu.",true).setAttribute("onclick","window.septle.aside.show('practice')");
-          window.confetti({particleCount:150,ticks:150});
+          try {window.confetti({particleCount:150,ticks:150}); } catch {}
         } else if(!nosave) {
           alert("You won!");
-          window.confetti({particleCount:150,ticks:150});
+          try {window.confetti({particleCount:150,ticks:150}); } catch {}
           setTimeout(goHome,3000);
         }
         simpleBoard["solved"] = true;
