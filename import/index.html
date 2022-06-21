@@ -2,7 +2,7 @@
 <html lang="en">
     <body>
         <script>
-            localStorage.septleStats = atob((new URLSearchParams(location.search)).stats);
+            localStorage.septleStats = atob((new URLSearchParams(location.search)).get("stats"));
             location.replace("/");
         </script>
     </body>
