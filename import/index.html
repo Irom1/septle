@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <script>
+            localStorage.septleStats = atob((new URLSearchParams(location.search)).stats);
+            location.replace("/");
+        </script>
+    </body>
+</html>
