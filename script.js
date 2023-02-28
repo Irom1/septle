@@ -1,17 +1,17 @@
 window.dictionary = [];
 async function loadJSON() {
   let cachePrevention = "?t=" + (new Date()).getTime();
-  let x = await fetch ("wordLists.json" + cachePrevention);
+  let x = await fetch("wordLists.json" + cachePrevention);
   x = await x.json();
   window.septle.wordList = x;
- fetch("shortened.json")
-  .then((x) => x.json())
-  .then((words) => {
-    window.dictionary = words;
-    readyToPlay();
-  }).catch(error => {
-    dictionaryFallback();
-  });
+  fetch("shortened.json")
+    .then((x) => x.json())
+    .then((words) => {
+      window.dictionary = words;
+      readyToPlay();
+    }).catch(error => {
+      dictionaryFallback();
+    });
 }
 loadJSON();
 function dictionaryFallback() {
@@ -793,13 +793,13 @@ document.title = "Septle";
 
 // run loaded functions
 function readyToPlay() {
-window.septle.initialDay = window.septle.getWord()["dayOffset"];
-window.septle.saveBoard();
-window.septle.theme.load();
-window.septle.statistics.load();
-window.septle.statistics.updateStreak("test");
-document.querySelector("#septle").previousElementSibling.scrollIntoView(); // scroll buttons into view
-document.querySelector("html").classList.remove("loading"); // hide loader
+  window.septle.initialDay = window.septle.getWord()["dayOffset"];
+  window.septle.saveBoard();
+  window.septle.theme.load();
+  window.septle.statistics.load();
+  window.septle.statistics.updateStreak("test");
+  document.querySelector("#septle").previousElementSibling.scrollIntoView(); // scroll buttons into view
+  document.querySelector("html").classList.remove("loading"); // hide loader
 }
 
 
@@ -830,7 +830,7 @@ function fixStreak() {
   }
   localStorage.septleStats = JSON.stringify(stats);
 }
-fixStreak();
+//fixStreak();
 
 
 if (window.self === window.top) {
