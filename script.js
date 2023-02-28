@@ -8,7 +8,7 @@ async function loadJSON() {
   .then((x) => x.json())
   .then((words) => {
     window.dictionary = words;
-    document.querySelector("html").classList.remove("loading");
+    readyToPlay();
   }).catch(error => {
     dictionaryFallback();
   });
@@ -19,7 +19,7 @@ function dictionaryFallback() {
     .then((x) => x.json())
     .then((words) => {
       window.dictionary = words;
-      document.querySelector("html").classList.remove("loading");
+      readyToPlay();
     });
 }
 
@@ -783,20 +783,24 @@ window.septle = {
   initialDay: 0
 };
 
+// load more resources
+document.body.appendChild(document.createElement('script')).src = 'concepts/confetti.js';
+document.body.appendChild(document.createElement('script')).src = 'concepts/image.js';
+//document.body.appendChild(document.createElement('script')).src='concepts/errors.js';
+
+// change the title to be more readable
+document.title = "Septle";
+
 // run loaded functions
+function readyToPlay() {
 window.septle.initialDay = window.septle.getWord()["dayOffset"];
 window.septle.saveBoard();
 window.septle.theme.load();
 window.septle.statistics.load();
 window.septle.statistics.updateStreak("test");
-// load more resources
-document.body.appendChild(document.createElement('script')).src = 'concepts/confetti.js';
-document.body.appendChild(document.createElement('script')).src = 'concepts/image.js';
-//document.body.appendChild(document.createElement('script')).src='concepts/errors.js';
-// scroll buttons into view
-document.querySelector("#septle").previousElementSibling.scrollIntoView();
-// change the title to be more readable
-document.title = "Septle";
+document.querySelector("#septle").previousElementSibling.scrollIntoView(); // scroll buttons into view
+document.querySelector("html").classList.remove("loading"); // hide loader
+}
 
 
 // check to see if day has passed
