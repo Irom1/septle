@@ -409,7 +409,7 @@ nav {
 .bottomPopup.error .errorText {
   display: block;
 }
-.bottomPopup input[type=text] {
+.bottomPopup input[type=text], .niceInput {
   border: 2px solid transparent;
   width: 100%;
   font-size: 20px;

@@ -780,6 +780,21 @@ window.septle = {
       });
     }
   },
+  submitWord: function () {
+    let elm = document.querySelector("#submitWord");
+    let word = elm.value;
+    // check
+    if(word.length != 6 && word.length != 7) {
+      alert("Must be a six or seven letter word!");
+      elm.focus();
+      return;
+    }
+    // submit
+    let url = "https://docs.google.com/forms/d/e/1FAIpQLSexW3aXIuyv03KAekOycymTHo5tuhjE0dQyxhFrZKUlMgK46Q/formResponse?usp=pp_url&submit=Submit&entry.55788812=" + word;
+    elm.value = "";
+    alert("Your word is submitted for review!");
+    fetch(url);
+  },
   initialDay: 0
 };
 

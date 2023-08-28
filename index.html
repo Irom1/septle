@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" class="loading">
+
 <head>
   <!-- only keep this non-codepen stuff -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>Septle - The Seven Letter Wordle</title>
-  <meta name="description" content="Septle is a seven letter word game based off of Wordle. Guess the hidden word in 8 tries. New puzzles are available each day.">
-  <meta name="keywords" content="septle, septal, septile, 7, letter, words, wordle, game, puzzle, word, letters, play, online, guess">
+  <meta name="description"
+    content="Septle is a seven letter word game based off of Wordle. Guess the hidden word in 8 tries. New puzzles are available each day.">
+  <meta name="keywords"
+    content="septle, septal, septile, 7, letter, words, wordle, game, puzzle, word, letters, play, online, guess">
   <meta name="theme-color" content="#21123b" />
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X4SN7QKEYV"></script>
   <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-X4SN7QKEYV');
-</script>
-<!-- FB Meta Tags -->
-<meta property="og:url" content="https://septle.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Septle - The Seven Letter Wordle">
-<meta property="og:description" content="Guess the hidden word in 8 tries. New puzzles are available each day.">
-<meta property="og:image" content="https://septle.com/content.png">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-X4SN7QKEYV');
+  </script>
+  <!-- FB Meta Tags -->
+  <meta property="og:url" content="https://septle.com">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Septle - The Seven Letter Wordle">
+  <meta property="og:description" content="Guess the hidden word in 8 tries. New puzzles are available each day.">
+  <meta property="og:image" content="https://septle.com/content.png">
 
-<!-- Twitter Meta Tags -->
-<meta name="twitter:card" content="summary_large_image">
-<meta property="twitter:domain" content="septle.com">
-<link rel="manifest" href="manifest.json" />
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link href="images/septle-small-logo.png" rel="apple-touch-icon" />
-<!-- end of stuff to keep -->
-<link rel="stylesheet" href="./standard.css?v=10">
-<link rel="stylesheet" href="./style.css?v=10">
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="septle.com">
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="images/septle-small-logo.png" rel="apple-touch-icon" />
+  <!-- end of stuff to keep -->
+  <link rel="stylesheet" href="./standard.css?v=10">
+  <link rel="stylesheet" href="./style.css?v=10">
 
 </head>
+
 <body>
   <!-- partial:index.partial.html -->
   <main>
@@ -78,7 +82,8 @@
         <span class="half"></span>
       </div>
       <div class="row">
-        <button class="key" id="enter" style="flex: 1.5;"><i class="fa-solid fa-circle-check" class="font-size: 1.2em;"></i></button>
+        <button class="key" id="enter" style="flex: 1.5;"><i class="fa-solid fa-circle-check"
+            class="font-size: 1.2em;"></i></button>
         <button class="key" data-value="Z">Z</button>
         <button class="key" data-value="X">X</button>
         <button class="key" data-value="C">C</button>
@@ -86,14 +91,19 @@
         <button class="key" data-value="B">B</button>
         <button class="key" data-value="N">N</button>
         <button class="key" data-value="M">M</button>
-        <button class="key" id="delete" style="flex: 1.5;"><i class="fa-solid fa-delete-left" class="font-size: 1.2em;"></i></button>
+        <button class="key" id="delete" style="flex: 1.5;"><i class="fa-solid fa-delete-left"
+            class="font-size: 1.2em;"></i></button>
       </div>
     </section>
   </main>
 
   <aside id="home" class="show">
-    <p>Guess the <strong>Septle</strong> in eight tries. <a onclick="window.septle.aside.show('info');">What's this?</a></p>
-    <p>If one game isn't enough, you can play the bonus or try <a onclick="window.septle.aside.show('practice');">practice mode</a>!</p>
+    <p>Guess the <strong>Septle</strong> in eight tries. <a onclick="window.septle.aside.show('info');">What's this?</a>
+    </p>
+    <p>If one game isn't enough, you can play the bonus or try <a
+        onclick="window.septle.aside.show('practice');">practice mode</a>!</p>
+    <p><span style="background: yellow; color: black; border-radius: 5px; padding: 0 5px;">NEW!</span> Help <a
+        onclick="window.septle.aside.show('addWord');">contribute words</a> to our word list.</p>
     <span class="spacing"></span>
     <div id="septle" class="bundle">
       <h2>Septle: <span class="status"></span></h2>
@@ -121,18 +131,33 @@
     </div>
     <!--<span class="halfButtons">
       <button onclick="window.septle.aside.show('info');" class="info"></button>-->
-      <button onclick="window.septle.aside.show('statistics');" class="openStats"></button>
+    <button onclick="window.septle.aside.show('statistics');" class="openStats"></button>
     <!--</span>-->
     <span class="spacing"></span>
     <div class="bundle">
       <h2>Support Us</h2>
       <p>Help us keep septle up to date and ad-free!</p>
       <span class="halfButtons">
-        <button style="background:var(--yellow);color:white" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeBMjFjauT9ynh809m3NhGiUbiXr1lkefSpDTtJrS9WIxgyAA/viewform')"><i class="fa-solid fa-message-lines"></i> Feedback</button>
-        <button style="background:var(--pink);color:white" onclick="window.open('https://ko-fi.com/septle')"><i class="fa-solid fa-heart"></i> Donate</button>
+        <button style="background:var(--yellow);color:white"
+          onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeBMjFjauT9ynh809m3NhGiUbiXr1lkefSpDTtJrS9WIxgyAA/viewform')"><i
+            class="fa-solid fa-message-lines"></i> Feedback</button>
+        <button style="background:var(--pink);color:white" onclick="window.open('https://ko-fi.com/septle')"><i
+            class="fa-solid fa-heart"></i> Donate</button>
       </span>
-      <button onclick="window.open('https://twitter.com/SeptleGame')" style="color:white;background:rgb(29, 155, 240);margin-top:7px;"><i class="fa-brands fa-twitter"></i> Follow Us on Twitter</button>
+      <button onclick="window.open('https://twitter.com/SeptleGame')"
+        style="color:white;background:rgb(29, 155, 240);margin-top:7px;"><i class="fa-brands fa-twitter"></i> Follow Us
+        on Twitter</button>
     </div>
+  </aside>
+  <aside id="addWord">
+    <h1>Add a word to our list</h1>
+    <p>Have a great 6 or 7 letter word for our game?</p>
+    <p>This is your chance to submit it for a chance to have it on the list in future!</p>
+    <p>Please only submit words that are fairly common and don't have controversial spellings.</p>
+    <span class="spacing" style="height: 30px"></span>
+    <input type="text" pattern="^([a-zA-Z]){6,7}$" class="niceInput" placeholder="Type your word here..." id="submitWord" style="text-align: center;" />
+    <span class="spacing"></span>
+    <button class="ios yellow" style="width:100%" onclick="window.septle.submitWord();">Submit Word</button>
   </aside>
   <aside id="practice">
     <h1>Practice Mode</h1>
@@ -251,35 +276,47 @@
     <div class="bundle">
       <h2>Streak</h2>
       <p>Have a past streak on another device/browser? You can now carry over the stats.</p>
-      <button onclick="localStorage.septleStats = atob(prompt('What is your export string?'));window.septle.statistics.load();">Import Past Streak</button>
+      <button
+        onclick="localStorage.septleStats = atob(prompt('What is your export string?'));window.septle.statistics.load();">Import
+        Past Streak</button>
       <span class="spacing"></span>
-      <button onclick="window.septle.statistics.load();window.septle.statistics.copy(window.btoa(localStorage.septleStats));alert(`Copied export string to clipboard. To import, tap 'Import Past Streak' and paste the string in another browser.`);">Export Current Streak</button>
-      <p>Don't have an export string? <a onclick="window.septle.statistics.manualUpdate();">Manually input</a> instead.</p>
+      <button
+        onclick="window.septle.statistics.load();window.septle.statistics.copy(window.btoa(localStorage.septleStats));alert(`Copied export string to clipboard. To import, tap 'Import Past Streak' and paste the string in another browser.`);">Export
+        Current Streak</button>
+      <p>Don't have an export string? <a onclick="window.septle.statistics.manualUpdate();">Manually input</a> instead.
+      </p>
     </div>
   </aside>
   <aside id="info">
     <h1>Info</h1>
-    <p>Septle is a seven letter word game based off of the <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank">New York Times' Wordle</a>. The words update daily.</p>
+    <p>Septle is a seven letter word game based off of the <a href="https://www.nytimes.com/games/wordle/index.html"
+        target="_blank">New York Times' Wordle</a>. The words update daily.</p>
     <p>Not sure how to play? <a onclick="window.septle.aside.show('intro');">Learn here</a></p>
     <p>Also: The bonus and NYTimes words are not required to get a streak and words reset at midnight.</p>
     <br>
-    <p>&copy; Septle 2022. All rights reserved.<br>Wordle and the The New York Times are copyrighted properties of The New York Times Company and are not affiliated with Septle.</p>
+    <p>&copy; Septle 2022. All rights reserved.<br>Wordle and the The New York Times are copyrighted properties of The
+      New York Times Company and are not affiliated with Septle.</p>
     <br>
     <div class="bundle">
       <h2>Feedback</h2>
       <p>Have Questions or Concerns? We'd love to hear it!</p>
       <span class="halfButtons">
-        <button style="width:75%;background:var(--green);color:white" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeBMjFjauT9ynh809m3NhGiUbiXr1lkefSpDTtJrS9WIxgyAA/viewform')"><i class="fa-solid fa-message-lines"></i> Leave Feedback</button>
-        <button style="background:var(--yellow);color:white" onclick="window.open('mailto:support@septle.com')"><i class="fa-solid fa-envelope"></i> Email Us</button>
+        <button style="width:75%;background:var(--green);color:white"
+          onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeBMjFjauT9ynh809m3NhGiUbiXr1lkefSpDTtJrS9WIxgyAA/viewform')"><i
+            class="fa-solid fa-message-lines"></i> Leave Feedback</button>
+        <button style="background:var(--yellow);color:white" onclick="window.open('mailto:support@septle.com')"><i
+            class="fa-solid fa-envelope"></i> Email Us</button>
       </span>
     </div>
   </aside>
   <aside id="sorry">
     <h1>Word Fix!</h1>
     <p>Recently the Wordle word hasn't matched our five-letter word, but that is now fixed!</p>
-    <p>Additional apologies to all who have left feedback and have not heard back from me. I'm a high school student and run this in my spare time, so sometimes things slip up. Thank you all for continuing to play!</p>
+    <p>Additional apologies to all who have left feedback and have not heard back from me. I'm a high school student and
+      run this in my spare time, so sometimes things slip up. Thank you all for continuing to play!</p>
     </ol><br><br>
-    <button onclick="window.septle.aside.show('home');" style="background:var(--green);color:white;"><b>Continue ➜</b></button>
+    <button onclick="window.septle.aside.show('home');" style="background:var(--green);color:white;"><b>Continue
+        ➜</b></button>
   </aside>
   <aside id="wordChanged">
     <h1>Looks like one of the words changed!</h1>
@@ -288,14 +325,16 @@
       1) We accidentally chose a really obscure word<br>
       2) The New York Times changed their word in advance, and we only realized midday.</p>
     <br><br><br><br>
-    <button onclick="window.septle.aside.show('home');" style="background:var(--green);color:white;"><b>Continue ➜</b></button>
+    <button onclick="window.septle.aside.show('home');" style="background:var(--green);color:white;"><b>Continue
+        ➜</b></button>
   </aside>
   <aside id="intro">
     <h2>How to Play</h2>
     <p>Guess the <strong>SEPTLE</strong> in 8 tries.</p>
     <p>Each guess must be a valid 7 letter word. Hit the enter button to submit.</p>
     <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
-    <br><h2>Examples</h2>
+    <br>
+    <h2>Examples</h2>
     <p>The letter W is in the word and in the correct spot.</p>
     <table class="squares" style="--rows:1;--letters:7;">
       <tbody style="padding:0">
@@ -348,7 +387,7 @@
 
   <!-- Loading Screen -->
   <div class="loadScreen">
-    <img src="images/septle-small-logo.png"/>
+    <img src="images/septle-small-logo.png" />
     <h1>Septle</h1>
   </div>
 
@@ -359,7 +398,8 @@
   </div>
 
   <!-- load script -->
-  <script  src="./script.js?v=10"></script>
+  <script src="./script.js?v=10"></script>
 
 </body>
+
 </html>
