@@ -293,6 +293,9 @@ div.bundle button, div.bundle button.light {
 }
 span.halfButtons {
   display: flex;
+  max-width: 100%;
+  overflow: scroll;
+  border-radius: 10px;
 }
 span.halfButtons button {
   width: 50%;
