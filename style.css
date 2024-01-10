@@ -393,9 +393,14 @@ section.keyboard .row .half {
   flex: 0.5;
 }
 
+aside span.visualButtons {
+  overflow-x: scroll;
+  touch-action: pan-x;
+}
 aside span.visualButtons button {
   padding: 8px;
   cursor: auto;
+  touch-action: pan-x;
 }
 
 aside span.gradientButtons button {
