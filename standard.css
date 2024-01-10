@@ -72,6 +72,7 @@
 * {
   box-sizing: border-box;
   /* Prevent system buttons */
+  appearance: none;
   -webkit-appearance: none;
   /* iOS/mobile device scroll fixes */
   touch-action: pan-y;
@@ -79,7 +80,6 @@
   -webkit-user-select: auto; /* Safari */
   user-select: auto;
   transition: background 0.1s, color 0.1s, border 0.1s;
-  -webkit-appearance: none;
 }
 *:not(input) {
   user-select: none;
