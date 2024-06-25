@@ -2,7 +2,7 @@
 :root,
 .light {
   --header-height: 50px;
-  --keyboard-height: 200px;
+  --keyboard-height: calc(200px + env(safe-area-inset-bottom));
   --game-max-width: 500px;
   --letters: 7;
   --rows: 8;
@@ -572,4 +572,31 @@ div#alertBox span {
     /*35px*/
   ;
   cursor: pointer;
+}
+
+.keyboard {
+  position: relative;
+}
+.keyboard .dictionary {
+  height: 100%;
+  width: 100%;
+  background: var(--transparent);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: absolute;
+  left: 0;
+  top: var(--keyboard-height);
+  transition: top .3s;
+  /* center contents vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.keyboard .dictionary.show {
+  top: 0;
+}
+
+.dictionary button {
+  background: var(--blobButton);
+  color: var(--color-tone-1);
 }

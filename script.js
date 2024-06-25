@@ -121,6 +121,23 @@ window.septle = {
       key.classList.remove("filled");
       key.removeAttribute("data-state");
     });
+    // set up dictionary (hide it first)
+    let dictionaryElm = document.querySelector(".keyboard .dictionary");
+    dictionaryElm.classList.remove("show");
+    dictionaryElm.innerHTML = `
+    <div>
+      <h1 style='text-align:center'>Game over!</h1>
+      <!--<p style='text-align:center'>Loading definition...</p>-->
+      <button onclick="window.septle.aside.show('home');">Go home</button>
+      <span class="spacing"></span>
+      <button onclick="this.parentElement.parentElement.classList.remove('show')">Show keyboard</button>
+    </div>
+    `;
+    // fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + word).then(json => json.json()).then(data => {
+    //   let partOfSpeech = data[0]["meanings"][0]["partOfSpeech"];
+    //   let definition = data[0]["meanings"][0]["definitions"][0]["definition"];
+    //   console.log(data, partOfSpeech, definition);
+    // })
     // setup/reset board
     table.style = "--letters:" + collums + ";--rows:" + rows + ";transform:scale(" + scale + ");";
     table.innerHTML = "";
@@ -306,13 +323,14 @@ window.septle = {
       }
       if (guessWord == word) {
         // they won!
+        if(this.listName != "practice") document.querySelector(".keyboard .dictionary").classList.add("show");
         if (this.listName == "practice") {
           alert("You won! Tap to go back to the menu.", true).setAttribute("onclick", "window.septle.aside.show('practice')");
           try { window.confetti({ particleCount: 150, ticks: 150 }); } catch { }
         } else if (!nosave) {
           alert("You won!");
           try { window.confetti({ particleCount: 150, ticks: 150 }); } catch { }
-          setTimeout(goHome, 3000);
+          // setTimeout(goHome, 3000);
         }
         simpleBoard["solved"] = true;
       } else if (row.nextElementSibling) {
@@ -321,6 +339,7 @@ window.septle = {
         row.querySelector("td").classList.add("current");
       } else {
         // losers
+        if(this.listName != "practice") document.querySelector(".keyboard .dictionary").classList.add("show");
         if (nosave != "silence") {
           document.querySelector("table.squares").classList.add("fail");
           simpleBoard["solved"] = "fail";
@@ -329,7 +348,6 @@ window.septle = {
           alert("You lost. Tap to go back to the menu.", true).setAttribute("onclick", "window.septle.aside.show('practice')");
         } else if (!nosave) {
           alert("You lost. Better luck next time!");
-          setTimeout(goHome, 3000);
         }
       }
       // save board state
@@ -849,20 +867,21 @@ function fixStreak() {
 
 
 if (window.self === window.top) {
+  // disabled b/c no longer available
   // if not loaded in frame, add arc
-  let arcScript = document.createElement("script");
-  arcScript.async = true;
-  arcScript.src = "https://arc.io/widget.min.js#V4PvzRNr";
-  document.body.appendChild(arcScript);
-  arcScript.onload = function () {
-    let waitingLoop = setInterval(function () {
-      if (document.querySelector("#arc-widget")) {
-        document.querySelector("#arc-widget").style = "bottom: auto !important;left: auto !important;right: 0 !important;top: 0 !important;";
-        document.querySelector("#arc-space").style.display = "inline-block";
-        clearInterval(waitingLoop);
-      }
-    }, 100);
-  };
+  // let arcScript = document.createElement("script");
+  // arcScript.async = true;
+  // arcScript.src = "https://arc.io/widget.min.js#V4PvzRNr";
+  // document.body.appendChild(arcScript);
+  // arcScript.onload = function () {
+  //   let waitingLoop = setInterval(function () {
+  //     if (document.querySelector("#arc-widget")) {
+  //       document.querySelector("#arc-widget").style = "bottom: auto !important;left: auto !important;right: 0 !important;top: 0 !important;";
+  //       document.querySelector("#arc-space").style.display = "inline-block";
+  //       clearInterval(waitingLoop);
+  //     }
+  //   }, 100);
+  // };
   // trigger some google analytics thing here
 } else {
   // otherwise trigger something else for google analytics

@@ -56,43 +56,51 @@
       <table class="squares"></table>
     </section>
     <section class="keyboard">
-      <div class="row">
-        <button class="key" data-value="Q">Q</button>
-        <button class="key" data-value="W">W</button>
-        <button class="key" data-value="E">E</button>
-        <button class="key" data-value="R">R</button>
-        <button class="key" data-value="T">T</button>
-        <button class="key" data-value="Y">Y</button>
-        <button class="key" data-value="U">U</button>
-        <button class="key" data-value="I">I</button>
-        <button class="key" data-value="O">O</button>
-        <button class="key" data-value="P">P</button>
+      <div class="keys">
+        <div class="row">
+          <button class="key" data-value="Q">Q</button>
+          <button class="key" data-value="W">W</button>
+          <button class="key" data-value="E">E</button>
+          <button class="key" data-value="R">R</button>
+          <button class="key" data-value="T">T</button>
+          <button class="key" data-value="Y">Y</button>
+          <button class="key" data-value="U">U</button>
+          <button class="key" data-value="I">I</button>
+          <button class="key" data-value="O">O</button>
+          <button class="key" data-value="P">P</button>
+        </div>
+        <div class="row">
+          <span class="half"></span>
+          <button class="key" data-value="A">A</button>
+          <button class="key" data-value="S">S</button>
+          <button class="key" data-value="D">D</button>
+          <button class="key" data-value="F">F</button>
+          <button class="key" data-value="G">G</button>
+          <button class="key" data-value="H">H</button>
+          <button class="key" data-value="J">J</button>
+          <button class="key" data-value="K">K</button>
+          <button class="key" data-value="L">L</button>
+          <span class="half"></span>
+        </div>
+        <div class="row">
+          <button class="key" id="enter" style="flex: 1.5;"><i class="fa-solid fa-circle-check"
+              class="font-size: 1.2em;"></i></button>
+          <button class="key" data-value="Z">Z</button>
+          <button class="key" data-value="X">X</button>
+          <button class="key" data-value="C">C</button>
+          <button class="key" data-value="V">V</button>
+          <button class="key" data-value="B">B</button>
+          <button class="key" data-value="N">N</button>
+          <button class="key" data-value="M">M</button>
+          <button class="key" id="delete" style="flex: 1.5;"><i class="fa-solid fa-delete-left"
+              class="font-size: 1.2em;"></i></button>
+        </div>
       </div>
-      <div class="row">
-        <span class="half"></span>
-        <button class="key" data-value="A">A</button>
-        <button class="key" data-value="S">S</button>
-        <button class="key" data-value="D">D</button>
-        <button class="key" data-value="F">F</button>
-        <button class="key" data-value="G">G</button>
-        <button class="key" data-value="H">H</button>
-        <button class="key" data-value="J">J</button>
-        <button class="key" data-value="K">K</button>
-        <button class="key" data-value="L">L</button>
-        <span class="half"></span>
-      </div>
-      <div class="row">
-        <button class="key" id="enter" style="flex: 1.5;"><i class="fa-solid fa-circle-check"
-            class="font-size: 1.2em;"></i></button>
-        <button class="key" data-value="Z">Z</button>
-        <button class="key" data-value="X">X</button>
-        <button class="key" data-value="C">C</button>
-        <button class="key" data-value="V">V</button>
-        <button class="key" data-value="B">B</button>
-        <button class="key" data-value="N">N</button>
-        <button class="key" data-value="M">M</button>
-        <button class="key" id="delete" style="flex: 1.5;"><i class="fa-solid fa-delete-left"
-            class="font-size: 1.2em;"></i></button>
+      <div class="dictionary">
+        <!-- New Dictionary feature start -->
+         <h1>Definition</h1>
+         <span class="type">noun</span>
+        <!-- New Dictionary feature end -->
       </div>
     </section>
   </main>
@@ -139,10 +147,10 @@
       <p>Anything broken or any suggestions?</p>
       <!-- <p>Help us keep septle up to date and ad-free!</p> -->
       <!-- <span class="halfButtons"> -->
-        <button style="background:var(--yellow);color:white"
-          onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeBMjFjauT9ynh809m3NhGiUbiXr1lkefSpDTtJrS9WIxgyAA/viewform')"><i
-            class="fa-solid fa-message-lines"></i> Send Feedback</button>
-        <!-- <button style="background:var(--pink);color:white" onclick="window.open('https://ko-fi.com/septle')"><i class="fa-solid fa-heart"></i> Donate</button> -->
+      <button style="background:var(--yellow);color:white"
+        onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeBMjFjauT9ynh809m3NhGiUbiXr1lkefSpDTtJrS9WIxgyAA/viewform')"><i
+          class="fa-solid fa-message-lines"></i> Send Feedback</button>
+      <!-- <button style="background:var(--pink);color:white" onclick="window.open('https://ko-fi.com/septle')"><i class="fa-solid fa-heart"></i> Donate</button> -->
       <!-- </span> -->
       <!-- <button onclick="window.open('https://twitter.com/SeptleGame')" style="color:white;background:rgb(29, 155, 240);margin-top:7px;"><i class="fa-brands fa-twitter"></i> Follow Us on Twitter</button> -->
     </div>
@@ -151,9 +159,11 @@
     <h1>Add a word to our list</h1>
     <p>Have a great 6 or 7 letter word for our game?</p>
     <p>This is your chance to submit it for a chance to have it on the list in future!</p>
-    <p>Please only submit words that are fairly common, don't have controversial spellings and <span style="background: yellow; color: black; border-radius: 5px; padding: 0 5px;">don't end in a suffix</span></p>
+    <p>Please only submit words that are fairly common, don't have controversial spellings and <span
+        style="background: yellow; color: black; border-radius: 5px; padding: 0 5px;">don't end in a suffix</span></p>
     <span class="spacing" style="height: 30px"></span>
-    <input type="text" pattern="^([a-zA-Z]){6,7}$" class="niceInput" placeholder="Type your word here..." id="submitWord" style="text-align: center;" />
+    <input type="text" pattern="^([a-zA-Z]){6,7}$" class="niceInput" placeholder="Type your word here..."
+      id="submitWord" style="text-align: center;" />
     <span class="spacing"></span>
     <button class="ios yellow" style="width:100%" onclick="window.septle.submitWord();">Submit Word</button>
   </aside>
