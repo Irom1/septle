@@ -126,18 +126,33 @@ window.septle = {
     dictionaryElm.classList.remove("show");
     dictionaryElm.innerHTML = `
     <div>
+      <br><br>
       <h1 style='text-align:center'>Game over!</h1>
-      <!--<p style='text-align:center'>Loading definition...</p>-->
-      <button onclick="window.septle.aside.show('home');">Go home</button>
-      <span class="spacing"></span>
-      <button onclick="this.parentElement.parentElement.classList.remove('show')">Show keyboard</button>
+      <span style="margin-left:auto;" class="halfButtons">
+          <button onclick="window.septle.aside.show('home');"><i class='fa-solid fa-home'></i> Home</button>
+          <button onclick="this.parentElement.parentElement.parentElement.classList.remove('show')"><i class='fa-solid fa-keyboard'></i> Show Keyboard</button>
     </div>
     `;
-    // fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + word).then(json => json.json()).then(data => {
-    //   let partOfSpeech = data[0]["meanings"][0]["partOfSpeech"];
-    //   let definition = data[0]["meanings"][0]["definitions"][0]["definition"];
-    //   console.log(data, partOfSpeech, definition);
-    // })
+    fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + word).then(json => json.json()).then(data => {
+      let definitions = "";
+      data[0]["meanings"].forEach(meaning => {
+        let def = meaning["definitions"][0];
+        definitions += `<p><strong>${meaning["partOfSpeech"]}</strong> ${def["definition"]}</p>`;
+      });
+      dictionaryElm.innerHTML = `
+        <h1 style='margin-bottom:0;display:flex;'>
+        ${word}
+        <!--<span style='font-size:0.7em;padding: .35em;display: block;font-weight: normal;'>${data[0]["phonetics"][0]["text"]}</span>-->
+        <span style="margin-left:auto;" class="halfButtons">
+          <button onclick="window.septle.aside.show('home');"><i class='fa-solid fa-home'></i></button>
+          <button onclick="this.parentElement.parentElement.parentElement.classList.remove('show')"><i class='fa-solid fa-keyboard'></i></button>
+          <button onclick="window.septle.aside.show('statistics');"><i class='fa-solid fa-chart-simple'></i></button>
+        </span>
+        </h1>
+        ${definitions}
+        <button onclick="window.open('${data[0]["sourceUrls"][0]}')">See all definitions →</button>
+      `;
+    })
     // setup/reset board
     table.style = "--letters:" + collums + ";--rows:" + rows + ";transform:scale(" + scale + ");";
     table.innerHTML = "";
@@ -323,7 +338,7 @@ window.septle = {
       }
       if (guessWord == word) {
         // they won!
-        if(this.listName != "practice") document.querySelector(".keyboard .dictionary").classList.add("show");
+        if (this.listName != "practice") document.querySelector(".keyboard .dictionary").classList.add("show");
         if (this.listName == "practice") {
           alert("You won! Tap to go back to the menu.", true).setAttribute("onclick", "window.septle.aside.show('practice')");
           try { window.confetti({ particleCount: 150, ticks: 150 }); } catch { }
@@ -339,7 +354,7 @@ window.septle = {
         row.querySelector("td").classList.add("current");
       } else {
         // losers
-        if(this.listName != "practice") document.querySelector(".keyboard .dictionary").classList.add("show");
+        if (this.listName != "practice") document.querySelector(".keyboard .dictionary").classList.add("show");
         if (nosave != "silence") {
           document.querySelector("table.squares").classList.add("fail");
           simpleBoard["solved"] = "fail";
@@ -802,7 +817,7 @@ window.septle = {
     let elm = document.querySelector("#submitWord");
     let word = elm.value;
     // check
-    if(word.length != 6 && word.length != 7) {
+    if (word.length != 6 && word.length != 7) {
       alert("Must be a six or seven letter word!");
       elm.focus();
       return;

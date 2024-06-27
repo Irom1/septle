@@ -587,10 +587,8 @@ div#alertBox span {
   left: 0;
   top: var(--keyboard-height);
   transition: top .3s;
-  /* center contents vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 20px;
+  overflow-y: auto;
 }
 .keyboard .dictionary.show {
   top: 0;
