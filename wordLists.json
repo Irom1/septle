@@ -887,7 +887,14 @@
         "chalk",
         "flake",
         "scale",
-        "lower"
+        "lower",
+        "ensue",
+        "anvil",
+        "macaw",
+        "saucy",
+        "ounce",
+        "medic",
+        "scone"
     ],
     "six": [
         "german",
@@ -1752,7 +1759,14 @@
         "ALBEIT",
         "SWITCH",
         "BAKING",
-        "INVEST"
+        "INVEST",
+        "german",
+        "guitar",
+        "toasty",
+        "piracy",
+        "derail",
+        "asthma",
+        "depict"
     ],
     "septle": [
         "spinach",
@@ -2620,6 +2634,9 @@
         "context",
         "process",
         "immerse",
-        "tubular"
+        "tubular",
+        "warning",
+        "furnace",
+        "glamour"
     ]
 }
