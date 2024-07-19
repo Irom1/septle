@@ -894,7 +894,14 @@
         "saucy",
         "ounce",
         "medic",
-        "scone"
+        "scone",
+        "skiff",
+        "enemy",
+        "shore",
+        "acorn",
+        "brace",
+        "neigh",
+        "storm"
     ],
     "six": [
         "german",
@@ -1769,7 +1776,9 @@
         "depict",
         "editor",
         "script",
-        "twinge"
+        "twinge",
+        "ignore",
+        "resume"
     ],
     "septle": [
         "spinach",
@@ -2646,6 +2655,7 @@
         "Origami",
         "Foresee",
         "Crystal",
-        "Immoral"
+        "Immoral",
+        "Preface"
     ]
 }
