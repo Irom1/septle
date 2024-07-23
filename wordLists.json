@@ -1778,7 +1778,9 @@
         "script",
         "twinge",
         "ignore",
-        "resume"
+        "resume",
+        "strand",
+        "ashore"
     ],
     "septle": [
         "spinach",
@@ -2656,6 +2658,8 @@
         "Foresee",
         "Crystal",
         "Immoral",
-        "Preface"
+        "Preface",
+        "element",
+        "mistook"
     ]
 }
