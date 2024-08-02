@@ -1788,7 +1788,10 @@
         "lament",
         "statue",
         "symbol",
-        "jargon"
+        "jargon",
+        "german",
+        "blouse",
+        ""  
     ],
     "septle": [
         "spinach",
@@ -2677,6 +2680,8 @@
         "standby",
         "aquatic",
         "diffuse",
-        "villain"
+        "villain",
+        "distort",
+        "abridge"       
     ]
 }
