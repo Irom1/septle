@@ -1827,7 +1827,17 @@
         "suffix",
         "opaque",
         "PLAQUE",
-        "Mirror"
+        "Mirror",
+        "BURDEN",
+        "REFUTE",
+        "SCHISM",
+        "PLACID",
+        "EXHORT",
+        "DIADEM",
+        "EERILY",
+        "DIVERT",
+        "REFLEX",
+        "CREEPY"
     ],
     "septle": [
         "spinach",
@@ -2732,6 +2742,15 @@
         "inquest",
         "demonic",
         "Tsunami",
-        "Biscuit"
+        "Biscuit",
+        "SEASICK",
+        "TROLLEY",
+        "LAUNDRY",
+        "DUNGEON",
+        "GATEWAY",
+        "HASTILY",
+        "HEALTHY",
+        "CALDRON",
+        "BROADEN"
     ]
 }

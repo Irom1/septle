@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Word Filter</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="robots" content="noindex">
+
+    <style>
+        body {
+            padding: 20px;
+            font-family: arial;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        div {
+            display: flex;
+            gap: 10px;
+        }
+
+        div button {
+            flex: 1;
+            padding: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 0;
+            background: #eee;
+        }
+
+        div.colorful button {
+            background: #1b88f4;
+            color: white;
+        }
+
+        div.colorful button:last-child {
+            background: #fa1754;
+        }
+
+        textarea {
+            width: 100%;
+            height: 350px;
+            border-radius: 10px;
+            padding: 10px;
+            border: none;
+            background: #eee;
+            margin-bottom: 10px;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+    <div>
+        <button onclick="selectWord(6)">Six</button>
+        <button onclick="selectWord(7)">Seven</button>
+    </div>
+    <h1>Loading...</h1>
+    <p>Please wait</p>
+    <div class="colorful">
+        <button onclick="goodWord()">Good</button>
+        <button onclick="selectWord()">Bad</button>
+    </div>
+    <br>
+    <textarea placeholder="Words will appear here"></textarea>
+    <div>
+        <button onclick="copy()">Copy</button>
+        <button onclick="window.clear()">Reset</button>
+    </div>
+
+    <script id="rendered-js">
+        var currentCache = false, suggestionsCache = false;
+
+        async function getCurrent() {
+            if (currentCache) return currentCache;
+            let json = await fetch("https://septle.com/wordLists.json?t=" + Date.now());
+            json = await json.json();
+            let words = [...Object.values(json)];
+            currentCache = words;
+            return words;
+        }
+
+        async function getWords() {
+            if (suggestionsCache) return suggestionsCache;
+            let list = [];
+            let spreadsheetID = "14J4NcbRsG-clTZ3F5lxONjx6robQJMC6LnYU9BFWgzU";
+            let data = await fetch(
+                "https://docs.google.com/spreadsheets/d/" +
+                spreadsheetID +
+                "/export?format=tsv&gid=983396740"
+            );
+            data = await data.text();
+            data = data.split("\n");
+            data.forEach((row) => {
+                let x = row.split("\t")[1].toUpperCase();
+                list.push(x);
+            });
+            suggestionsCache = list;
+            return list;
+        }
+
+        async function isDef(word) {
+            // todo check if word in dictionary
+            let data = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + word);
+            data = await data.json();
+            if ("title" in data && data.title == "No Definitions Found") return false;
+            let definitions = "";
+            data[0]["meanings"].forEach(meaning => {
+                let def = meaning["definitions"][0];
+                definitions += `<p><strong>${meaning["partOfSpeech"]}</strong> ${def["definition"]}</p>`;
+            });
+            return definitions;
+        }
+
+        async function word(length = 7) {
+            let current = await getCurrent();
+            let words = await getWords();
+
+            // console.clear();
+            // words = words.toUpperCase().split(",");
+            // console.log(words);
+
+            let newWords = {};
+
+            words.forEach((word) => {
+                if (current.toString().toUpperCase().includes(word)) {
+                    // console.log("repeat: " + word);
+                } else if (
+                    word.endsWith("ED") ||
+                    word.endsWith("ER") ||
+                    word.endsWith("ING") ||
+                    word.endsWith("S")
+                ) {
+                    // do nothing, it's a bad word
+                } else if (word.length == length) {
+                    if (word in newWords) newWords[word]++;
+                    else newWords[word] = 1;
+                }
+            });
+
+            // sort newWords
+            let entries = Object.entries(newWords);
+            entries.sort((a, b) => b[1] - a[1]);
+            let sortedObj = Object.fromEntries(entries);
+
+            // console.log(newWords.length + " new words");
+
+            //document.write(JSON.stringify(sortedObj));
+
+            return sortedObj;
+        }
+
+        let saved = 7;
+        async function selectWord(length) {
+            if (!length) length = saved;
+            else saved = length;
+            let options = await word(length);
+            console.log(options);
+            let wordz = Object.keys(options);
+            let isDictionaryValid = false, i = 0;
+            while (isDictionaryValid == false) {
+                i++;
+                console.log(i);
+                if (i > 1000) {
+                    console.log("looping too much");
+                    return;
+                }
+                let random = Math.floor(Math.random() * wordz.length);
+                console.log(random);
+                window.wordOfChoice = wordz[random];
+                console.log(window.wordOfChoice);
+                isDictionaryValid = await isDef(window.wordOfChoice);
+            }
+            document.querySelector("h1").innerText = window.wordOfChoice;
+            document.querySelector("p").innerHTML = isDictionaryValid;
+        }
+
+        selectWord();
+
+        window.clear = function () {
+            document.querySelector("textarea").value = "";
+            localStorage.wordLists = "";
+        }
+
+        function updateStorage(stuff) {
+            if (!stuff) {
+                stuff = localStorage.wordLists || "{}";
+                stuff = JSON.parse(stuff);
+            }
+            localStorage.wordLists = JSON.stringify(stuff);
+            document.querySelector("textarea").value = JSON.stringify(stuff, "", 4);
+        }
+
+        function goodWord() {
+            let existing = document.querySelector("textarea").value;
+            window.lastData = existing;
+            let newObject = {};
+            try {
+                newObject = JSON.parse(existing);
+            } catch (e) {
+                console.warn(e);
+            }
+            let wordToAdd = window.wordOfChoice;
+            let len = wordToAdd.length;
+            let listType = { 6: "six", 7: "septle" }[len];
+            if (!(listType in newObject)) newObject[listType] = [wordToAdd];
+            else newObject[listType].push(wordToAdd);
+            updateStorage(newObject);
+            selectWord();
+        }
+
+        updateStorage();
+
+        function copy() {
+            let copyText = document.querySelector("textarea").value;
+            // copyText.select();
+            navigator.clipboard.writeText(copyText);
+        }
+    </script>
+
+
+</body>
+
+</html>
