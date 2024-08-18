@@ -1825,7 +1825,9 @@
         "pacify",
         "planet",
         "suffix",
-        "opaque"
+        "opaque",
+        "PLAQUE",
+        "Mirror"
     ],
     "septle": [
         "spinach",
@@ -2728,6 +2730,8 @@
         "antique",
         "placate",
         "inquest",
-        "demonic"
+        "demonic",
+        "Tsunami",
+        "Biscuit"
     ]
 }
