@@ -964,7 +964,14 @@
         "halve",
         "stint",
         "fiber",
-        "dicey"
+        "dicey",
+        "spoon",
+        "rabbi",
+        "goofy",
+        "bossy",
+        "frown",
+        "wreak",
+        "shout"
     ],
     "six": [
         "german",
@@ -1916,7 +1923,18 @@
         "PEANUT",
         "MASCOT",
         "BOUNCE",
-        "MYRIAD"
+        "MYRIAD",
+        "BREACH",
+        "UTOPIA",
+        "OPTION",
+        "CASKET",
+        "ORNATE",
+        "ENGULF",
+        "NEURON",
+        "DISMAL",
+        "SNATCH",
+        "REVOKE",
+        "NORMAL"
     ],
     "septle": [
         "spinach",
@@ -2864,6 +2882,27 @@
         "ELATION",
         "GALLANT",
         "MANSION",
-        "PILGRIM"
+        "PILGRIM",
+        "ENGRAVE",
+        "SUNROOF",
+        "VETERAN",
+        "CRIPPLE",
+        "TRIBUTE",
+        "EYEBROW",
+        "PROPHET",
+        "DORMANT",
+        "RATCHET",
+        "CHASTEN",
+        "FRACTAL",
+        "KARAOKE",
+        "ARUGULA",
+        "SERPENT",
+        "DRAPERY",
+        "PAGEANT",
+        "JACUZZI",
+        "ANODIZE",
+        "NARRATE",
+        "INDULGE",
+        "PENSION"
     ]
 }
