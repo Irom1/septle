@@ -1956,7 +1956,20 @@
         "SNATCH",
         "REVOKE",
         "NORMAL",
-        "BRUNCH"
+        "BRUNCH",
+        "BELFRY",
+        "HUBCAP",
+        "PISTON",
+        "SACHET",
+        "CATNIP",
+        "PAPAYA",
+        "MARGIN",
+        "IMMUNE",
+        "PYTHON",
+        "TRIPLE",
+        "LAGOON",
+        "ENABLE",
+        "SCORCH"
     ],
     "septle": [
         "spinach",
