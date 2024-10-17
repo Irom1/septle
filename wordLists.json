@@ -1934,7 +1934,9 @@
         "DISMAL",
         "SNATCH",
         "REVOKE",
-        "NORMAL"
+        "NORMAL",
+        "CONCAVE",
+        "FRECKLE"
     ],
     "septle": [
         "spinach",
